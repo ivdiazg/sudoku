@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CuadroSudokuComponent } from './cuadro-sudoku/cuadro-sudoku.component';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CuadroSudokuComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatInputModule
