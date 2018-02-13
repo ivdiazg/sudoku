@@ -2,3 +2,44 @@
   width: 50px !important;
   height: 10px !important;
 }
+
+table {
+  margin: 0 auto;
+  border: 2px solid #673ab7;
+}
+
+table #table1, table #table3, table #table5, table #table7, table #table9 {
+  background-color: #9c27b0;
+}
+
+table #table2, table #table4, table #table6, table #table8 {
+  background-color: #424242;
+}
+
+td {
+  border: 1px solid whitesmoke;
+  width: 54px;
+  height: 50.5px;
+  vertical-align: baseline;
+}
+
+input {
+  text-align: center;
+}
+
+button {
+  width: 250px;
+  font-size: 1.1em;
+  margin: 30px 0;
+  border: 2px solid #673ab7;
+  color: whitesmoke !important;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.mat-input-element {
+  color: whitesmoke;
+}
+
+/deep/.mat-form-field-wrapper {
+  padding-bottom: 1.55em;
+}
