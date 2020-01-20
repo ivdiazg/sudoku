@@ -143,32 +143,33 @@ export class CuadroSudokuComponent implements OnInit {
   }
 
   cargaSudokuExtreme() {
-    this.casilla12 = 5;
-    this.casilla17 = 3;
-    this.casilla18 = 6;
-    this.casilla23 = 7;
-    this.casilla25 = 3;
-    this.casilla29 = 9;
-    this.casilla32 = 1;
-    this.casilla33 = 3;
-    this.casilla34 = 9;
-    this.casilla35 = 8;
-    this.casilla46 = 7;
-    this.casilla51 = 7;
-    this.casilla54 = 8;
-    this.casilla56 = 1;
-    this.casilla59 = 3;
-    this.casilla64 = 2;
-    this.casilla75 = 9;
-    this.casilla76 = 4;
-    this.casilla77 = 1;
-    this.casilla78 = 7;
-    this.casilla81 = 2;
-    this.casilla85 = 7;
-    this.casilla87 = 6;
-    this.casilla92 = 7;
-    this.casilla93 = 5;
-    this.casilla98 = 8;
+    this.casilla15 = 8;
+    this.casilla16 = 5;
+    this.casilla19 = 3;
+    this.casilla21 = 3;
+    this.casilla27 = 8;
+    this.casilla31 = 2;
+    this.casilla33 = 6;
+    this.casilla36 = 9;
+    this.casilla38 = 1;
+    this.casilla42 = 5;
+    this.casilla44 = 4;
+    this.casilla49 = 9;
+    this.casilla52 = 2;
+    this.casilla55 = 1;
+    this.casilla58 = 4;
+    this.casilla61 = 4;
+    this.casilla66 = 8;
+    this.casilla68 = 3;
+    this.casilla72 = 4;
+    this.casilla74 = 7;
+    this.casilla77 = 3;
+    this.casilla79 = 2;
+    this.casilla83 = 9;
+    this.casilla89 = 4;
+    this.casilla91 = 7;
+    this.casilla94 = 6;
+    this.casilla95 = 5;
   }
 
   iniciaSudoku() {
@@ -206,8 +207,9 @@ export class CuadroSudokuComponent implements OnInit {
     return seccion;
   }
 
-  resolver() {
-    this.cargaValoresEnArray();
+  async resolver() {
+    console.log('resolver');
+    await this.cargaValoresEnArray();
     this.eliminaProbabilidadesConValor();
     this.eliminaProbabilidadesPorColumna();
     this.eliminaProbabilidadesPorFila();
@@ -217,9 +219,9 @@ export class CuadroSudokuComponent implements OnInit {
     this.eliminaProbabilidadesPorSeccionProb();
     this.seteaValoresEnCasilla().then(() => {
       this.cargaValoresEnInputs();
-      if (this.faltanValores()) {
-        this.resolver();
-      }
+      // if (this.faltanValores()) {
+      //   this.resolver();
+      // }
     });
   }
 
@@ -312,88 +314,96 @@ export class CuadroSudokuComponent implements OnInit {
     this.casilla99 = this.casillas.find(x => x.columna === 9 && x.fila === 9).valor;
   }
 
+  stringToNumber(string) {
+    if (typeof string === 'string') {
+      return Number(string);
+    } else {
+      return string;
+    }
+  }
+
   cargaValoresEnArray() {
-    this.casillas.find(x => x.columna === 1 && x.fila === 1).valor = this.casilla11;
-    this.casillas.find(x => x.columna === 1 && x.fila === 2).valor = this.casilla12;
-    this.casillas.find(x => x.columna === 1 && x.fila === 3).valor = this.casilla13;
-    this.casillas.find(x => x.columna === 1 && x.fila === 4).valor = this.casilla14;
-    this.casillas.find(x => x.columna === 1 && x.fila === 5).valor = this.casilla15;
-    this.casillas.find(x => x.columna === 1 && x.fila === 6).valor = this.casilla16;
-    this.casillas.find(x => x.columna === 1 && x.fila === 7).valor = this.casilla17;
-    this.casillas.find(x => x.columna === 1 && x.fila === 8).valor = this.casilla18;
-    this.casillas.find(x => x.columna === 1 && x.fila === 9).valor = this.casilla19;
-    this.casillas.find(x => x.columna === 2 && x.fila === 1).valor = this.casilla21;
-    this.casillas.find(x => x.columna === 2 && x.fila === 2).valor = this.casilla22;
-    this.casillas.find(x => x.columna === 2 && x.fila === 3).valor = this.casilla23;
-    this.casillas.find(x => x.columna === 2 && x.fila === 4).valor = this.casilla24;
-    this.casillas.find(x => x.columna === 2 && x.fila === 5).valor = this.casilla25;
-    this.casillas.find(x => x.columna === 2 && x.fila === 6).valor = this.casilla26;
-    this.casillas.find(x => x.columna === 2 && x.fila === 7).valor = this.casilla27;
-    this.casillas.find(x => x.columna === 2 && x.fila === 8).valor = this.casilla28;
-    this.casillas.find(x => x.columna === 2 && x.fila === 9).valor = this.casilla29;
-    this.casillas.find(x => x.columna === 3 && x.fila === 1).valor = this.casilla31;
-    this.casillas.find(x => x.columna === 3 && x.fila === 2).valor = this.casilla32;
-    this.casillas.find(x => x.columna === 3 && x.fila === 3).valor = this.casilla33;
-    this.casillas.find(x => x.columna === 3 && x.fila === 4).valor = this.casilla34;
-    this.casillas.find(x => x.columna === 3 && x.fila === 5).valor = this.casilla35;
-    this.casillas.find(x => x.columna === 3 && x.fila === 6).valor = this.casilla36;
-    this.casillas.find(x => x.columna === 3 && x.fila === 7).valor = this.casilla37;
-    this.casillas.find(x => x.columna === 3 && x.fila === 8).valor = this.casilla38;
-    this.casillas.find(x => x.columna === 3 && x.fila === 9).valor = this.casilla39;
-    this.casillas.find(x => x.columna === 4 && x.fila === 1).valor = this.casilla41;
-    this.casillas.find(x => x.columna === 4 && x.fila === 2).valor = this.casilla42;
-    this.casillas.find(x => x.columna === 4 && x.fila === 3).valor = this.casilla43;
-    this.casillas.find(x => x.columna === 4 && x.fila === 4).valor = this.casilla44;
-    this.casillas.find(x => x.columna === 4 && x.fila === 5).valor = this.casilla45;
-    this.casillas.find(x => x.columna === 4 && x.fila === 6).valor = this.casilla46;
-    this.casillas.find(x => x.columna === 4 && x.fila === 7).valor = this.casilla47;
-    this.casillas.find(x => x.columna === 4 && x.fila === 8).valor = this.casilla48;
-    this.casillas.find(x => x.columna === 4 && x.fila === 9).valor = this.casilla49;
-    this.casillas.find(x => x.columna === 5 && x.fila === 1).valor = this.casilla51;
-    this.casillas.find(x => x.columna === 5 && x.fila === 2).valor = this.casilla52;
-    this.casillas.find(x => x.columna === 5 && x.fila === 3).valor = this.casilla53;
-    this.casillas.find(x => x.columna === 5 && x.fila === 4).valor = this.casilla54;
-    this.casillas.find(x => x.columna === 5 && x.fila === 5).valor = this.casilla55;
-    this.casillas.find(x => x.columna === 5 && x.fila === 6).valor = this.casilla56;
-    this.casillas.find(x => x.columna === 5 && x.fila === 7).valor = this.casilla57;
-    this.casillas.find(x => x.columna === 5 && x.fila === 8).valor = this.casilla58;
-    this.casillas.find(x => x.columna === 5 && x.fila === 9).valor = this.casilla59;
-    this.casillas.find(x => x.columna === 6 && x.fila === 1).valor = this.casilla61;
-    this.casillas.find(x => x.columna === 6 && x.fila === 2).valor = this.casilla62;
-    this.casillas.find(x => x.columna === 6 && x.fila === 3).valor = this.casilla63;
-    this.casillas.find(x => x.columna === 6 && x.fila === 4).valor = this.casilla64;
-    this.casillas.find(x => x.columna === 6 && x.fila === 5).valor = this.casilla65;
-    this.casillas.find(x => x.columna === 6 && x.fila === 6).valor = this.casilla66;
-    this.casillas.find(x => x.columna === 6 && x.fila === 7).valor = this.casilla67;
-    this.casillas.find(x => x.columna === 6 && x.fila === 8).valor = this.casilla68;
-    this.casillas.find(x => x.columna === 6 && x.fila === 9).valor = this.casilla69;
-    this.casillas.find(x => x.columna === 7 && x.fila === 1).valor = this.casilla71;
-    this.casillas.find(x => x.columna === 7 && x.fila === 2).valor = this.casilla72;
-    this.casillas.find(x => x.columna === 7 && x.fila === 3).valor = this.casilla73;
-    this.casillas.find(x => x.columna === 7 && x.fila === 4).valor = this.casilla74;
-    this.casillas.find(x => x.columna === 7 && x.fila === 5).valor = this.casilla75;
-    this.casillas.find(x => x.columna === 7 && x.fila === 6).valor = this.casilla76;
-    this.casillas.find(x => x.columna === 7 && x.fila === 7).valor = this.casilla77;
-    this.casillas.find(x => x.columna === 7 && x.fila === 8).valor = this.casilla78;
-    this.casillas.find(x => x.columna === 7 && x.fila === 9).valor = this.casilla79;
-    this.casillas.find(x => x.columna === 8 && x.fila === 1).valor = this.casilla81;
-    this.casillas.find(x => x.columna === 8 && x.fila === 2).valor = this.casilla82;
-    this.casillas.find(x => x.columna === 8 && x.fila === 3).valor = this.casilla83;
-    this.casillas.find(x => x.columna === 8 && x.fila === 4).valor = this.casilla84;
-    this.casillas.find(x => x.columna === 8 && x.fila === 5).valor = this.casilla85;
-    this.casillas.find(x => x.columna === 8 && x.fila === 6).valor = this.casilla86;
-    this.casillas.find(x => x.columna === 8 && x.fila === 7).valor = this.casilla87;
-    this.casillas.find(x => x.columna === 8 && x.fila === 8).valor = this.casilla88;
-    this.casillas.find(x => x.columna === 8 && x.fila === 9).valor = this.casilla89;
-    this.casillas.find(x => x.columna === 9 && x.fila === 1).valor = this.casilla91;
-    this.casillas.find(x => x.columna === 9 && x.fila === 2).valor = this.casilla92;
-    this.casillas.find(x => x.columna === 9 && x.fila === 3).valor = this.casilla93;
-    this.casillas.find(x => x.columna === 9 && x.fila === 4).valor = this.casilla94;
-    this.casillas.find(x => x.columna === 9 && x.fila === 5).valor = this.casilla95;
-    this.casillas.find(x => x.columna === 9 && x.fila === 6).valor = this.casilla96;
-    this.casillas.find(x => x.columna === 9 && x.fila === 7).valor = this.casilla97;
-    this.casillas.find(x => x.columna === 9 && x.fila === 8).valor = this.casilla98;
-    this.casillas.find(x => x.columna === 9 && x.fila === 9).valor = this.casilla99;
+    this.casillas.find(x => x.columna === 1 && x.fila === 1).valor = this.stringToNumber(this.casilla11);
+    this.casillas.find(x => x.columna === 1 && x.fila === 2).valor = this.stringToNumber(this.casilla12);
+    this.casillas.find(x => x.columna === 1 && x.fila === 3).valor = this.stringToNumber(this.casilla13);
+    this.casillas.find(x => x.columna === 1 && x.fila === 4).valor = this.stringToNumber(this.casilla14);
+    this.casillas.find(x => x.columna === 1 && x.fila === 5).valor = this.stringToNumber(this.casilla15);
+    this.casillas.find(x => x.columna === 1 && x.fila === 6).valor = this.stringToNumber(this.casilla16);
+    this.casillas.find(x => x.columna === 1 && x.fila === 7).valor = this.stringToNumber(this.casilla17);
+    this.casillas.find(x => x.columna === 1 && x.fila === 8).valor = this.stringToNumber(this.casilla18);
+    this.casillas.find(x => x.columna === 1 && x.fila === 9).valor = this.stringToNumber(this.casilla19);
+    this.casillas.find(x => x.columna === 2 && x.fila === 1).valor = this.stringToNumber(this.casilla21);
+    this.casillas.find(x => x.columna === 2 && x.fila === 2).valor = this.stringToNumber(this.casilla22);
+    this.casillas.find(x => x.columna === 2 && x.fila === 3).valor = this.stringToNumber(this.casilla23);
+    this.casillas.find(x => x.columna === 2 && x.fila === 4).valor = this.stringToNumber(this.casilla24);
+    this.casillas.find(x => x.columna === 2 && x.fila === 5).valor = this.stringToNumber(this.casilla25);
+    this.casillas.find(x => x.columna === 2 && x.fila === 6).valor = this.stringToNumber(this.casilla26);
+    this.casillas.find(x => x.columna === 2 && x.fila === 7).valor = this.stringToNumber(this.casilla27);
+    this.casillas.find(x => x.columna === 2 && x.fila === 8).valor = this.stringToNumber(this.casilla28);
+    this.casillas.find(x => x.columna === 2 && x.fila === 9).valor = this.stringToNumber(this.casilla29);
+    this.casillas.find(x => x.columna === 3 && x.fila === 1).valor = this.stringToNumber(this.casilla31);
+    this.casillas.find(x => x.columna === 3 && x.fila === 2).valor = this.stringToNumber(this.casilla32);
+    this.casillas.find(x => x.columna === 3 && x.fila === 3).valor = this.stringToNumber(this.casilla33);
+    this.casillas.find(x => x.columna === 3 && x.fila === 4).valor = this.stringToNumber(this.casilla34);
+    this.casillas.find(x => x.columna === 3 && x.fila === 5).valor = this.stringToNumber(this.casilla35);
+    this.casillas.find(x => x.columna === 3 && x.fila === 6).valor = this.stringToNumber(this.casilla36);
+    this.casillas.find(x => x.columna === 3 && x.fila === 7).valor = this.stringToNumber(this.casilla37);
+    this.casillas.find(x => x.columna === 3 && x.fila === 8).valor = this.stringToNumber(this.casilla38);
+    this.casillas.find(x => x.columna === 3 && x.fila === 9).valor = this.stringToNumber(this.casilla39);
+    this.casillas.find(x => x.columna === 4 && x.fila === 1).valor = this.stringToNumber(this.casilla41);
+    this.casillas.find(x => x.columna === 4 && x.fila === 2).valor = this.stringToNumber(this.casilla42);
+    this.casillas.find(x => x.columna === 4 && x.fila === 3).valor = this.stringToNumber(this.casilla43);
+    this.casillas.find(x => x.columna === 4 && x.fila === 4).valor = this.stringToNumber(this.casilla44);
+    this.casillas.find(x => x.columna === 4 && x.fila === 5).valor = this.stringToNumber(this.casilla45);
+    this.casillas.find(x => x.columna === 4 && x.fila === 6).valor = this.stringToNumber(this.casilla46);
+    this.casillas.find(x => x.columna === 4 && x.fila === 7).valor = this.stringToNumber(this.casilla47);
+    this.casillas.find(x => x.columna === 4 && x.fila === 8).valor = this.stringToNumber(this.casilla48);
+    this.casillas.find(x => x.columna === 4 && x.fila === 9).valor = this.stringToNumber(this.casilla49);
+    this.casillas.find(x => x.columna === 5 && x.fila === 1).valor = this.stringToNumber(this.casilla51);
+    this.casillas.find(x => x.columna === 5 && x.fila === 2).valor = this.stringToNumber(this.casilla52);
+    this.casillas.find(x => x.columna === 5 && x.fila === 3).valor = this.stringToNumber(this.casilla53);
+    this.casillas.find(x => x.columna === 5 && x.fila === 4).valor = this.stringToNumber(this.casilla54);
+    this.casillas.find(x => x.columna === 5 && x.fila === 5).valor = this.stringToNumber(this.casilla55);
+    this.casillas.find(x => x.columna === 5 && x.fila === 6).valor = this.stringToNumber(this.casilla56);
+    this.casillas.find(x => x.columna === 5 && x.fila === 7).valor = this.stringToNumber(this.casilla57);
+    this.casillas.find(x => x.columna === 5 && x.fila === 8).valor = this.stringToNumber(this.casilla58);
+    this.casillas.find(x => x.columna === 5 && x.fila === 9).valor = this.stringToNumber(this.casilla59);
+    this.casillas.find(x => x.columna === 6 && x.fila === 1).valor = this.stringToNumber(this.casilla61);
+    this.casillas.find(x => x.columna === 6 && x.fila === 2).valor = this.stringToNumber(this.casilla62);
+    this.casillas.find(x => x.columna === 6 && x.fila === 3).valor = this.stringToNumber(this.casilla63);
+    this.casillas.find(x => x.columna === 6 && x.fila === 4).valor = this.stringToNumber(this.casilla64);
+    this.casillas.find(x => x.columna === 6 && x.fila === 5).valor = this.stringToNumber(this.casilla65);
+    this.casillas.find(x => x.columna === 6 && x.fila === 6).valor = this.stringToNumber(this.casilla66);
+    this.casillas.find(x => x.columna === 6 && x.fila === 7).valor = this.stringToNumber(this.casilla67);
+    this.casillas.find(x => x.columna === 6 && x.fila === 8).valor = this.stringToNumber(this.casilla68);
+    this.casillas.find(x => x.columna === 6 && x.fila === 9).valor = this.stringToNumber(this.casilla69);
+    this.casillas.find(x => x.columna === 7 && x.fila === 1).valor = this.stringToNumber(this.casilla71);
+    this.casillas.find(x => x.columna === 7 && x.fila === 2).valor = this.stringToNumber(this.casilla72);
+    this.casillas.find(x => x.columna === 7 && x.fila === 3).valor = this.stringToNumber(this.casilla73);
+    this.casillas.find(x => x.columna === 7 && x.fila === 4).valor = this.stringToNumber(this.casilla74);
+    this.casillas.find(x => x.columna === 7 && x.fila === 5).valor = this.stringToNumber(this.casilla75);
+    this.casillas.find(x => x.columna === 7 && x.fila === 6).valor = this.stringToNumber(this.casilla76);
+    this.casillas.find(x => x.columna === 7 && x.fila === 7).valor = this.stringToNumber(this.casilla77);
+    this.casillas.find(x => x.columna === 7 && x.fila === 8).valor = this.stringToNumber(this.casilla78);
+    this.casillas.find(x => x.columna === 7 && x.fila === 9).valor = this.stringToNumber(this.casilla79);
+    this.casillas.find(x => x.columna === 8 && x.fila === 1).valor = this.stringToNumber(this.casilla81);
+    this.casillas.find(x => x.columna === 8 && x.fila === 2).valor = this.stringToNumber(this.casilla82);
+    this.casillas.find(x => x.columna === 8 && x.fila === 3).valor = this.stringToNumber(this.casilla83);
+    this.casillas.find(x => x.columna === 8 && x.fila === 4).valor = this.stringToNumber(this.casilla84);
+    this.casillas.find(x => x.columna === 8 && x.fila === 5).valor = this.stringToNumber(this.casilla85);
+    this.casillas.find(x => x.columna === 8 && x.fila === 6).valor = this.stringToNumber(this.casilla86);
+    this.casillas.find(x => x.columna === 8 && x.fila === 7).valor = this.stringToNumber(this.casilla87);
+    this.casillas.find(x => x.columna === 8 && x.fila === 8).valor = this.stringToNumber(this.casilla88);
+    this.casillas.find(x => x.columna === 8 && x.fila === 9).valor = this.stringToNumber(this.casilla89);
+    this.casillas.find(x => x.columna === 9 && x.fila === 1).valor = this.stringToNumber(this.casilla91);
+    this.casillas.find(x => x.columna === 9 && x.fila === 2).valor = this.stringToNumber(this.casilla92);
+    this.casillas.find(x => x.columna === 9 && x.fila === 3).valor = this.stringToNumber(this.casilla93);
+    this.casillas.find(x => x.columna === 9 && x.fila === 4).valor = this.stringToNumber(this.casilla94);
+    this.casillas.find(x => x.columna === 9 && x.fila === 5).valor = this.stringToNumber(this.casilla95);
+    this.casillas.find(x => x.columna === 9 && x.fila === 6).valor = this.stringToNumber(this.casilla96);
+    this.casillas.find(x => x.columna === 9 && x.fila === 7).valor = this.stringToNumber(this.casilla97);
+    this.casillas.find(x => x.columna === 9 && x.fila === 8).valor = this.stringToNumber(this.casilla98);
+    this.casillas.find(x => x.columna === 9 && x.fila === 9).valor = this.stringToNumber(this.casilla99);
   }
 
   eliminaProbabilidadesPorColumna() {
